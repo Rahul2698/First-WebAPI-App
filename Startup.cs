@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using my_book_api.Data;
+using my_book_api.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace my_book_api
 
             services.AddDbContext<ApplicationDbContext>(options => 
                             options.UseSqlServer(Configuration.GetConnectionString("DefalutConnection")));
+
+            services.AddTransient<BookService>();
 
             services.AddSwaggerGen(c =>
             {
